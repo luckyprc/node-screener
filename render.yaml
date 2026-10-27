@@ -1,0 +1,14 @@
+# Render blueprint: one-click deploy of the screener as a free Singapore web service.
+# In the Render dashboard: New -> Blueprint -> paste the repo URL, keep region
+# Singapore and plan Free. The service serves /run, /results, /untested, /report.
+services:
+  - type: web
+    name: node-screener
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: singapore
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: SUB_URLS
+        value: https://raw.githubusercontent.com/barry-far/V2ray-Config/main/Sub14.txt
